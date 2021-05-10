@@ -1,0 +1,14 @@
+.calc {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calc__controls {
+  width: 100%;
+}
+
+.calc__i-o {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 20px;
+}

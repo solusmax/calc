@@ -3,7 +3,32 @@
 $fonts: "../fonts";
 $img: "../img";
 
+// Брейкпоинты
+
+$page-width-mobile: 320px;
+$page-width-smartphone: 450px;
+$page-width-tablet: 768px;
+$page-width-desktop: 1300px;
+
+$page-padding-mobile: 20px;
+$page-padding-tablet: 30px;
+$page-padding-desktop: 40px;
+
+// Анимация
+
+$transition-duration: 0.15s;
+
 // Цвета
 
 $color-black: #000000;
 $color-white: #ffffff;
+
+$text-color: #cfcfcf;
+$text-disabled-color: darken($text-color, 25);
+
+$background-color: #3b3b3b;
+
+$foreground-color: #575757;
+$foreground-hover-color: lighten($foreground-color, 5);
+$foreground-active-color: lighten($foreground-color, 10);
+$foreground-disabled-color: darken($foreground-color, 7);

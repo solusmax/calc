@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Обычный калькулятор.">
   <title>Калькулятор</title>
   <link rel="stylesheet" href="css/style.min.css">
   <link rel="icon" href="favicon.ico">
@@ -13,6 +14,47 @@
 </head>
 
 <body class="page__body">
+
+  <main class="page__main">
+    <h1 class="visually-hidden">Калькулятор</h1>
+
+    <section class="page__calc calc">
+      <div class="calc__i-o i-o">
+        <output class="i-o__input">0</output>
+      </div>
+
+      <div class="calc__controls controls">
+        <button class="controls__digit controls__digit-0 controls__button button" type="button" tabindex="-1">0</button>
+        <button class="controls__digit controls__digit-1 controls__button button" type="button" tabindex="-1">1</button>
+        <button class="controls__digit controls__digit-2 controls__button button" type="button" tabindex="-1">2</button>
+        <button class="controls__digit controls__digit-3 controls__button button" type="button" tabindex="-1">3</button>
+        <button class="controls__digit controls__digit-4 controls__button button" type="button" tabindex="-1">4</button>
+        <button class="controls__digit controls__digit-5 controls__button button" type="button" tabindex="-1">5</button>
+        <button class="controls__digit controls__digit-6 controls__button button" type="button" tabindex="-1">6</button>
+        <button class="controls__digit controls__digit-7 controls__button button" type="button" tabindex="-1">7</button>
+        <button class="controls__digit controls__digit-8 controls__button button" type="button" tabindex="-1">8</button>
+        <button class="controls__digit controls__digit-9 controls__button button" type="button" tabindex="-1">9</button>
+        <button class="controls__decimal-separator controls__button button" type="button" tabindex="-1">.</button>
+        <button class="controls__opposite controls__button button" type="button" tabindex="-1">+/&minus;</button>
+
+        <button class="controls__clear-entry controls__button button" type="button" tabindex="-1">CE</button>
+        <button class="controls__clear controls__button button button" type="button" tabindex="-1">C</button>
+        <button class="controls__backspace controls__button button" type="button" tabindex="-1">←</button>
+
+        <button class="controls__plus controls__button button" type="button" tabindex="-1">+</button>
+        <button class="controls__minus controls__button button" type="button" tabindex="-1">&minus;</button>
+        <button class="controls__divide controls__button button" type="button" tabindex="-1">&divide;</button>
+        <button class="controls__multiplication controls__button button" type="button" tabindex="-1">&times;</button>
+
+        <button class="controls__equals controls__button button" type="button" tabindex="-1">=</button>
+        <button class="controls__reciprocal controls__button button" type="button" tabindex="-1">1/x</button>
+        <button class="controls__power-two controls__button button" type="button" tabindex="-1">x<sup
+            class="button__sup">2</sup></button>
+        <button class="controls__square-root controls__button button" type="button" tabindex="-1">&Sqrt;x</button>
+        <button class="controls__percentage controls__button button" type="button" tabindex="-1">%</button>
+      </div>
+    </section>
+  </main>
 
   <script src="js/script.min.js"></script>
 </body>

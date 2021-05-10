@@ -1,0 +1,32 @@
+.page {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: $page-width-mobile;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: $page-padding-mobile;
+
+  font-family: "Roboto Mono", "Courier New", monospace;
+  color: $text-color;
+
+  background-color: $background-color;
+}
+
+.page__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page__calc {
+  width: 100%;
+  max-width: $page-width-smartphone;
+}

@@ -1,0 +1,44 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  border: none;
+  overflow: auto;
+
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 700;
+  color: $text-color;
+
+  background-color: $foreground-color;
+  transition-duration: $transition-duration;
+  transition-property: background-color;
+
+  &:hover {
+    background-color: $foreground-hover-color;
+  }
+
+  &:active {
+    background-color: $foreground-active-color;
+  }
+
+  &:disabled {
+    color: $text-disabled-color;
+
+    background-color: $foreground-disabled-color;
+  }
+
+  @media (min-width: $page-width-smartphone) {
+    font-size: 20px;
+  }
+
+  @media (min-width: $page-width-smartphone + ($page-padding-mobile * 2)) {
+    font-size: 22px;
+  }
+}
+
+.button__sup {
+  font-size: 0.55em;
+}
