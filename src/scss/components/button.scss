@@ -2,19 +2,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 15px;
+  padding: 5px;
   border: none;
   overflow: auto;
 
   font-family: inherit;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1;
   font-weight: 700;
   color: $text-color;
 
   background-color: $foreground-color;
   transition-duration: $transition-duration;
-  transition-property: background-color;
+  transition-property: background-color, color;
 
   &:hover {
     background-color: $foreground-hover-color;
@@ -24,21 +24,59 @@
     background-color: $foreground-active-color;
   }
 
+  &:focus {
+    // tabindex="-1", так что кнопки в любом случае не ловят фокус,
+    // но иногда происходит ложное срабатывание, поэтому отключаю явно
+    outline: none;
+  }
+
   &:disabled {
     color: $text-disabled-color;
 
     background-color: $foreground-disabled-color;
   }
+}
 
-  @media (min-width: $page-width-smartphone) {
-    font-size: 20px;
+.button--digit,
+.button--opposite,
+.button--decimal-separator {
+  background-color: $input-button-color;
+
+  &:hover {
+    background-color: $input-button-hover-color;
   }
 
-  @media (min-width: $page-width-smartphone + ($page-padding-mobile * 2)) {
-    font-size: 22px;
+  &:active {
+    background-color: $input-button-active-color;
+  }
+
+  &:disabled {
+    background-color: $input-button-disabled-color;
   }
 }
 
+.button--equals {
+  background-color: $equals-button-color;
+
+  &:hover {
+    background-color: $equals-button-hover-color;
+  }
+
+  &:active {
+    background-color: $equals-button-active-color;
+  }
+
+  &:disabled {
+    background-color: $equals-button-disabled-color;
+  }
+}
+
+.button > * {
+  pointer-events: none;
+}
+
 .button__sup {
+  margin-bottom: 1em;
+
   font-size: 0.55em;
 }
