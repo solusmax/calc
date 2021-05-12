@@ -5,9 +5,8 @@
 }
 
 .page__body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  align-items: center;
   min-width: $min-page-width;
   height: 100%;
   min-height: 100%;
