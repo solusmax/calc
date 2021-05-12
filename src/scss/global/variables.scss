@@ -21,6 +21,10 @@ $color-white: #ffffff;
 $text-color: #d6d6d6;
 $text-disabled-color: darken($text-color, 25);
 
+$text-about-color: #666666;
+$text-about-link-hover-color: lighten($text-about-color, 5);
+$text-about-link-active-color: lighten($text-about-color, 10);
+
 $background-color: #3b3b3b;
 
 $foreground-color: #575757;

@@ -1,0 +1,19 @@
+.about {
+  color: $text-about-color;
+  text-align: right;
+}
+
+.about__link {
+  color: $text-about-color;
+
+  transition-property: color;
+  transition-duration: $transition-duration;
+
+  &:hover {
+    color: $text-about-link-hover-color;
+  }
+
+  &:active {
+    color: $text-about-link-active-color;
+  }
+}
