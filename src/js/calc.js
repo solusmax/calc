@@ -1,17 +1,17 @@
 import { create, all } from 'mathjs';
-import { isNumberOk, isSymbolEquals } from './util/common.js';
+import { isNumberOk, isSymbolEquals } from './util.js';
 import { getLastValue, getParsedInputString, hasLastOperation, hasLastValue, hasNewInput, MAX_DIGITS_IN_INPUT, reportNoNewInput, setResultError, setLastOperation, getLastOperation, setLastValue, setStringToInput } from './input.js';
 
-const Config = {
+const MathSettings = {
   precision: MAX_DIGITS_IN_INPUT,
   lowerExp: -14,
   upperExp: 15,
   predictable: true,
 };
 
-const math = create(all, Config);
+const math = create(all, MathSettings);
 
-export const evaluateExpression = (expression) => math.format(math.evaluate(expression), Config);
+export const evaluateExpression = (expression) => math.format(math.evaluate(expression), MathSettings);
 
 const getCurrentUnaryExpression = (operation) => {
   const x = getParsedInputString();

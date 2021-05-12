@@ -1,5 +1,5 @@
 import { throttle } from 'lodash';
-import { arrayToSpaceSeparatedString, getConstantCaseFromKebabCase, renderNode } from './util';
+import { arrayToSpaceSeparatedString, getConstantCaseFromKebabCase } from './util.js';
 import { fitInputContent } from './input.js';
 
 const ioInputNode = document.querySelector('.input__field');
@@ -25,7 +25,7 @@ export const renderButtons = (buttons, buttonsLayout) => {
 
   controlsNode.style.gridTemplateAreas = buttonsLayout;
   ioInputNode.htmlFor = arrayToSpaceSeparatedString(addedButtons);
-  renderNode(controlsNode, buttonsFragment);
+  controlsNode.insertAdjacentHTML('beforeend', buttonsFragment);
 };
 
 const onControlsClick = (buttons) => {

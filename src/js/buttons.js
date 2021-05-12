@@ -1,6 +1,6 @@
 import { calcBinary, calcUnary } from './calc.js';
 import { addSymbolToInput, setInputValueToOpposite, removeLastSymbolInInput, setInputToDefault, clearCurrentEntry } from './input.js';
-import { getConstantCaseFromKebabCase } from './util';
+import { getConstantCaseFromKebabCase } from './util.js';
 
 export const BUTTONS_LAYOUT = `"reciprocal  clear-entry  clear              backspace"
                                "power-2     power-3      square-root        divide"
@@ -9,8 +9,10 @@ export const BUTTONS_LAYOUT = `"reciprocal  clear-entry  clear              back
                                "digit-1     digit-2      digit-3            plus"
                                "opposite    digit-0      decimal-separator  equals"`;
 
-const BUTTON_CSS_CLASS = 'button';
-const PARENT_BLOCK_CSS_CLASS = 'controls';
+const CssClasses = {
+  BUTTON: 'button',
+  PARENT_OF_BUTTONS: 'controls',
+};
 
 const Operations = new Set([
   {
@@ -81,13 +83,13 @@ const Operations = new Set([
   },
   {
     id: 'power-2',
-    label: `x<sup class="${BUTTON_CSS_CLASS}__sup">2</sup>`,
+    label: `x<sup class="${CssClasses.BUTTON}__sup">2</sup>`,
     shortcuts: ['q', 'Q'],
     fn: calcUnary.bind(null, 'power-2'),
   },
   {
     id: 'power-3',
-    label: `x<sup class="${BUTTON_CSS_CLASS}__sup">3</sup>`,
+    label: `x<sup class="${CssClasses.BUTTON}__sup">3</sup>`,
     shortcuts: ['#'],
     fn: calcUnary.bind(null, 'power-3'),
   },
@@ -99,14 +101,14 @@ const Operations = new Set([
   },
 ]);
 
-const DIGITS = new Array(10).fill().map((__, index) => String(index));
+const digits = new Array(10).fill().map((__, index) => String(index));
 
-DIGITS.forEach((digit) => {
+digits.forEach((digit) => {
   Operations.add({
     id: `digit-${digit}`,
     label: digit,
     shortcuts: [digit],
-    classAttribute: `${PARENT_BLOCK_CSS_CLASS}__digit ${PARENT_BLOCK_CSS_CLASS}__digit-${digit} ${PARENT_BLOCK_CSS_CLASS}__${BUTTON_CSS_CLASS} ${BUTTON_CSS_CLASS} ${BUTTON_CSS_CLASS}--digit`,
+    classAttribute: `${CssClasses.PARENT_OF_BUTTONS}__digit ${CssClasses.PARENT_OF_BUTTONS}__digit-${digit} ${CssClasses.PARENT_OF_BUTTONS}__${CssClasses.BUTTON} ${CssClasses.BUTTON} ${CssClasses.BUTTON}--digit`,
     fn: addSymbolToInput.bind(null, digit),
   });
 });
@@ -118,7 +120,7 @@ class Button {
     this.id = id;
     this.label = label;
     this.shortcuts = shortcuts ?? [];
-    this.classAttribute = classAttribute ?? `${PARENT_BLOCK_CSS_CLASS}__${this.id} ${PARENT_BLOCK_CSS_CLASS}__${BUTTON_CSS_CLASS} ${BUTTON_CSS_CLASS} ${BUTTON_CSS_CLASS}--${this.id}`;
+    this.classAttribute = classAttribute ?? `${CssClasses.PARENT_OF_BUTTONS}__${this.id} ${CssClasses.PARENT_OF_BUTTONS}__${CssClasses.BUTTON} ${CssClasses.BUTTON} ${CssClasses.BUTTON}--${this.id}`;
     this.fn = fn ?? null;
   }
 }
