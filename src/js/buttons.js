@@ -136,7 +136,7 @@ export const generateButtons = () => {
 };
 
 export const disableButtonsExceptClear = () => {
-  const buttons = document.querySelectorAll('.button');
+  const buttons = document.querySelector('.controls').querySelectorAll('.button');
 
   buttons.forEach((button) => {
     switch (button.id) {
@@ -150,7 +150,7 @@ export const disableButtonsExceptClear = () => {
 };
 
 export const enableAllButtons = () => {
-  const buttons = document.querySelectorAll('.button');
+  const buttons = document.querySelector('.controls').querySelectorAll('.button');
 
   buttons.forEach((button) => {
     button.disabled = false;
