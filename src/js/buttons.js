@@ -124,15 +124,15 @@ class Button {
 }
 
 export const generateButtons = () => {
-  const buttons = {};
+  const Buttons = {};
 
   for (const operation of Operations) {
     const { id } = operation;
 
-    buttons[getConstantCaseFromKebabCase(id)] = new Button(operation);
+    Buttons[getConstantCaseFromKebabCase(id)] = new Button(operation);
   }
 
-  return buttons;
+  return Buttons;
 };
 
 export const disableButtonsExceptClear = () => {
