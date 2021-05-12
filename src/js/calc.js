@@ -47,8 +47,6 @@ export const calcUnary = (operation) => {
   }
 
   setStringToInput(result);
-  setLastValue(result);
-  reportNoNewInput();
 };
 
 export const calcBinary = (operationSymbol) => {
