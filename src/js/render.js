@@ -1,5 +1,8 @@
 import { throttle } from 'lodash';
-import { arrayToSpaceSeparatedString, getConstantCaseFromKebabCase } from './util.js';
+import {
+  arrayToSpaceSeparatedString,
+  getConstantCaseFromKebabCase,
+} from './util.js';
 import { fitInputContent } from './input.js';
 
 const ioInputNode = document.querySelector('.input__field');

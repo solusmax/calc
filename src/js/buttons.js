@@ -1,5 +1,11 @@
 import { calcBinary, calcUnary } from './calc.js';
-import { addSymbolToInput, setInputValueToOpposite, removeLastSymbolInInput, setInputToDefault, clearCurrentEntry } from './input.js';
+import {
+  addSymbolToInput,
+  setInputValueToOpposite,
+  removeLastSymbolInInput,
+  setInputToDefault,
+  clearCurrentEntry,
+} from './input.js';
 import { getConstantCaseFromKebabCase } from './util.js';
 
 export const BUTTONS_LAYOUT = `"reciprocal  clear-entry  clear              backspace"
@@ -120,7 +126,9 @@ class Button {
     this.id = id;
     this.label = label;
     this.shortcuts = shortcuts ?? [];
-    this.classAttribute = classAttribute ?? `${CssClasses.PARENT_OF_BUTTONS}__${this.id} ${CssClasses.PARENT_OF_BUTTONS}__${CssClasses.BUTTON} ${CssClasses.BUTTON} ${CssClasses.BUTTON}--${this.id}`;
+    this.classAttribute =
+      classAttribute ??
+      `${CssClasses.PARENT_OF_BUTTONS}__${this.id} ${CssClasses.PARENT_OF_BUTTONS}__${CssClasses.BUTTON} ${CssClasses.BUTTON} ${CssClasses.BUTTON}--${this.id}`;
     this.fn = fn ?? null;
   }
 }
@@ -138,7 +146,9 @@ export const generateButtons = () => {
 };
 
 export const disableButtonsExceptClear = () => {
-  const buttons = document.querySelector('.controls').querySelectorAll('.button');
+  const buttons = document
+    .querySelector('.controls')
+    .querySelectorAll('.button');
 
   buttons.forEach((button) => {
     switch (button.id) {
@@ -152,7 +162,9 @@ export const disableButtonsExceptClear = () => {
 };
 
 export const enableAllButtons = () => {
-  const buttons = document.querySelector('.controls').querySelectorAll('.button');
+  const buttons = document
+    .querySelector('.controls')
+    .querySelectorAll('.button');
 
   buttons.forEach((button) => {
     button.disabled = false;

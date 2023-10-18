@@ -5,7 +5,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local("Roboto Mono"), local("Roboto Mono Regular"),
+  src:
+    local("Roboto Mono"),
+    local("Roboto Mono Regular"),
     local("RobotoMono-Regular"),
     url("#{$fonts}/RobotoMono-Regular.woff2") format("woff2"),
     url("#{$fonts}/RobotoMono-Regular.woff") format("woff");
@@ -18,7 +20,9 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local("Roboto Mono Bold"), local("RobotoMono-Bold"),
+  src:
+    local("Roboto Mono Bold"),
+    local("RobotoMono-Bold"),
     url("#{$fonts}/RobotoMono-Bold.woff2") format("woff2"),
     url("#{$fonts}/RobotoMono-Bold.woff") format("woff");
 }

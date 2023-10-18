@@ -1,6 +1,19 @@
 import { create, all } from 'mathjs';
 import { isNumberOk, isSymbolEquals } from './util.js';
-import { getLastValue, getParsedInputString, hasLastOperation, hasLastValue, hasNewInput, MAX_DIGITS_IN_INPUT, reportNoNewInput, setResultError, setLastOperation, getLastOperation, setLastValue, setStringToInput } from './input.js';
+import {
+  getLastValue,
+  getParsedInputString,
+  hasLastOperation,
+  hasLastValue,
+  hasNewInput,
+  MAX_DIGITS_IN_INPUT,
+  reportNoNewInput,
+  setResultError,
+  setLastOperation,
+  getLastOperation,
+  setLastValue,
+  setStringToInput,
+} from './input.js';
 
 const MathSettings = {
   precision: MAX_DIGITS_IN_INPUT,
@@ -11,7 +24,8 @@ const MathSettings = {
 
 const math = create(all, MathSettings);
 
-export const evaluateExpression = (expression) => math.format(math.evaluate(expression), MathSettings);
+export const evaluateExpression = (expression) =>
+  math.format(math.evaluate(expression), MathSettings);
 
 const getCurrentUnaryExpression = (operation) => {
   const x = getParsedInputString();
@@ -50,7 +64,10 @@ export const calcUnary = (operation) => {
 };
 
 export const calcBinary = (operationSymbol) => {
-  if (isSymbolEquals(operationSymbol) && (!hasLastOperation() || !hasLastValue())) {
+  if (
+    isSymbolEquals(operationSymbol) &&
+    (!hasLastOperation() || !hasLastValue())
+  ) {
     return;
   }
 

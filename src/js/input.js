@@ -1,4 +1,9 @@
-import { getCountOfDigits, getDigits, removeLastSymbol, isNumberOk } from './util.js';
+import {
+  getCountOfDigits,
+  getDigits,
+  removeLastSymbol,
+  isNumberOk,
+} from './util.js';
 import { evaluateExpression } from './calc.js';
 import { disableButtonsExceptClear, enableAllButtons } from './buttons';
 
@@ -33,7 +38,8 @@ export const setLastOperation = (operationSymbol) => {
 
 export const getLastOperation = () => ioInputNode.dataset.lastOperation;
 
-export const hasLastOperation = () => getLastOperation() !== DefaultInputValues.LAST_OPERATION;
+export const hasLastOperation = () =>
+  getLastOperation() !== DefaultInputValues.LAST_OPERATION;
 
 const clearLastOperation = () => {
   setLastOperation(DefaultInputValues.LAST_OPERATION);
@@ -45,21 +51,33 @@ export const setLastValue = (value) => {
 
 export const getLastValue = () => ioInputNode.dataset.lastValue;
 
-export const hasLastValue = () => getLastValue() !== DefaultInputValues.LAST_VALUE;
+export const hasLastValue = () =>
+  getLastValue() !== DefaultInputValues.LAST_VALUE;
 
 const clearLastValue = () => {
   setLastValue(DefaultInputValues.LAST_VALUE);
 };
 
 export const fitInputContent = () => {
-  const excessedLettersCount = ioInputNode.textContent.length - Math.ceil(ioInputNode.clientWidth / InputFontSettings.SYMBOL_WIDTH);
+  const excessedLettersCount =
+    ioInputNode.textContent.length -
+    Math.ceil(ioInputNode.clientWidth / InputFontSettings.SYMBOL_WIDTH);
 
-  const newFontSize = Math.max((excessedLettersCount > 0 ? (InputFontSettings.DEFAULT_SIZE - excessedLettersCount * InputFontSettings.COMPRESSION_RATIO) : InputFontSettings.DEFAULT_SIZE), InputFontSettings.MIN_SIZE);
+  const newFontSize = Math.max(
+    excessedLettersCount > 0
+      ? InputFontSettings.DEFAULT_SIZE -
+          excessedLettersCount * InputFontSettings.COMPRESSION_RATIO
+      : InputFontSettings.DEFAULT_SIZE,
+    InputFontSettings.MIN_SIZE,
+  );
 
   ioInputNode.style.fontSize = newFontSize + 'px';
 };
 
-const getInputString = () => ioInputNode.textContent.trim().replace(new RegExp(`${Chars.GROUPING_SEPARATOR}`, 'g'), '');
+const getInputString = () =>
+  ioInputNode.textContent
+    .trim()
+    .replace(new RegExp(`${Chars.GROUPING_SEPARATOR}`, 'g'), '');
 
 export const getParsedInputString = () => evaluateExpression(getInputString());
 
@@ -69,7 +87,8 @@ const isInputNegative = () => getInputString()[0] === Chars.MINUS;
 
 const isInputFinite = () => isFinite(getInputString());
 
-const hasDecimalSeparatorInInput = () => getInputString().includes(Chars.DECIMAL_SEPARATOR);
+const hasDecimalSeparatorInInput = () =>
+  getInputString().includes(Chars.DECIMAL_SEPARATOR);
 
 export const setStringToInput = (string) => {
   let resultString = string.trim();
@@ -81,9 +100,16 @@ export const setStringToInput = (string) => {
     const fractionalPart = numberParts[1] ?? null;
 
     const integerPartDigits = Number(getDigits(integerPart));
-    integerPart = integerPart.replace(new RegExp(integerPartDigits), integerPartDigits.toLocaleString());
+    integerPart = integerPart.replace(
+      new RegExp(integerPartDigits),
+      integerPartDigits.toLocaleString(),
+    );
 
-    resultString = `${integerPart}${resultString.includes(Chars.DECIMAL_SEPARATOR) || fractionalPart ? Chars.DECIMAL_SEPARATOR : ''}${fractionalPart ?? ''}`;
+    resultString = `${integerPart}${
+      resultString.includes(Chars.DECIMAL_SEPARATOR) || fractionalPart
+        ? Chars.DECIMAL_SEPARATOR
+        : ''
+    }${fractionalPart ?? ''}`;
   }
 
   ioInputNode.textContent = resultString;
@@ -138,31 +164,30 @@ export const setInputValueToOpposite = () => {
 
   reportNewInput();
 
-  const isInputZeroWithDecimalSeparator = Number(getParsedInputString()) === 0 && hasDecimalSeparatorInInput();
+  const isInputZeroWithDecimalSeparator =
+    Number(getParsedInputString()) === 0 && hasDecimalSeparatorInInput();
 
   if (
-    getParsedInputString() > 0
-    || (isInputZeroWithDecimalSeparator && !isInputNegative())
+    getParsedInputString() > 0 ||
+    (isInputZeroWithDecimalSeparator && !isInputNegative())
   ) {
     setStringToInput(`${Chars.MINUS}${getInputString()}`);
     return;
   }
 
   if (
-    getParsedInputString() < 0
-    || (isInputZeroWithDecimalSeparator && isInputNegative())
+    getParsedInputString() < 0 ||
+    (isInputZeroWithDecimalSeparator && isInputNegative())
   ) {
-    setStringToInput(getInputString().replace(new RegExp(`[${Chars.MINUS}]`, 'g'), ''));
+    setStringToInput(
+      getInputString().replace(new RegExp(`[${Chars.MINUS}]`, 'g'), ''),
+    );
     return;
   }
 };
 
 export const removeLastSymbolInInput = () => {
-  if (
-    isInputEmpty()
-    || !hasNewInput()
-    || !isInputFinite()
-  ) {
+  if (isInputEmpty() || !hasNewInput() || !isInputFinite()) {
     return;
   }
 
@@ -188,11 +213,17 @@ export const addSymbolToInput = (symbol) => {
   }
 
   if (
-    (getCountOfDigits(getInputString()) >= MAX_DIGITS_IN_INPUT)
-    || (symbol === Chars.DECIMAL_SEPARATOR && hasDecimalSeparatorInInput())
+    getCountOfDigits(getInputString()) >= MAX_DIGITS_IN_INPUT ||
+    (symbol === Chars.DECIMAL_SEPARATOR && hasDecimalSeparatorInInput())
   ) {
     return;
   }
 
-  setStringToInput(`${!isInputEmpty() || symbol === Chars.DECIMAL_SEPARATOR ? getInputString() : ''}${symbol}`);
+  setStringToInput(
+    `${
+      !isInputEmpty() || symbol === Chars.DECIMAL_SEPARATOR
+        ? getInputString()
+        : ''
+    }${symbol}`,
+  );
 };

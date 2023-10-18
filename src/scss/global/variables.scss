@@ -1,10 +1,12 @@
+@use "sass:color";
+
 // Пути
 
 $fonts: "../fonts";
 
 // Брейкпоинты
 
-$min-page-width: 320px;
+$min-page-width: 360px;
 $page-padding: 20px;
 
 $calc-max-width: 380px;
@@ -19,25 +21,34 @@ $color-black: #000000;
 $color-white: #ffffff;
 
 $text-color: #d6d6d6;
-$text-disabled-color: darken($text-color, 25);
+$text-disabled-color: color.adjust($text-color, $lightness: -25%);
 
 $text-about-color: #666666;
-$text-about-link-hover-color: lighten($text-about-color, 5);
-$text-about-link-active-color: lighten($text-about-color, 10);
+$text-about-link-hover-color: color.adjust($text-about-color, $lightness: 5%);
+$text-about-link-active-color: color.adjust($text-about-color, $lightness: 10%);
 
 $background-color: #3b3b3b;
 
 $foreground-color: #575757;
-$foreground-hover-color: lighten($foreground-color, 5);
-$foreground-active-color: lighten($foreground-color, 10);
-$foreground-disabled-color: darken($foreground-color, 7);
+$foreground-hover-color: color.adjust($foreground-color, $lightness: 5%);
+$foreground-active-color: color.adjust($foreground-color, $lightness: 10%);
+$foreground-disabled-color: color.adjust($foreground-color, $lightness: -7%);
 
-$input-button-color: lighten($foreground-color, 5);
-$input-button-hover-color: lighten($input-button-color, 5);
-$input-button-active-color: lighten($input-button-color, 10);
-$input-button-disabled-color: darken($input-button-color, 7);
+$input-button-color: color.adjust($foreground-color, $lightness: 5%);
+$input-button-hover-color: color.adjust($input-button-color, $lightness: 5%);
+$input-button-active-color: color.adjust($input-button-color, $lightness: 10%);
+$input-button-disabled-color: color.adjust(
+  $input-button-color,
+  $lightness: -7%
+);
 
-$equals-button-color: darken($foreground-color, 4);
-$equals-button-hover-color: lighten($equals-button-color, 5);
-$equals-button-active-color: lighten($equals-button-color, 10);
-$equals-button-disabled-color: darken($equals-button-color, 2);
+$equals-button-color: color.adjust($foreground-color, $lightness: -4%);
+$equals-button-hover-color: color.adjust($equals-button-color, $lightness: 5%);
+$equals-button-active-color: color.adjust(
+  $equals-button-color,
+  $lightness: 10%
+);
+$equals-button-disabled-color: color.adjust(
+  $equals-button-color,
+  $lightness: -2%
+);
