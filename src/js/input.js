@@ -102,7 +102,7 @@ export const setStringToInput = (string) => {
     const integerPartDigits = Number(getDigits(integerPart));
     integerPart = integerPart.replace(
       new RegExp(integerPartDigits),
-      integerPartDigits.toLocaleString(),
+      integerPartDigits.toLocaleString('en-US'),
     );
 
     resultString = `${integerPart}${
